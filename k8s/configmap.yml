@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: greeting
+data:
+  # property-like keys; each key maps to a simple value
+  hello: "Hello World!"
+  my_full_name: "Hi! I'm Vinicius de Paula"

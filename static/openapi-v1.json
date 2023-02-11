@@ -1,0 +1,109 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Hello World APP!",
+      "description": "App para retornar Hello World!."
+    },
+    "paths": {
+      "/healthcheck": {
+        "get": {
+          "tags": [
+            "Healthcheck"
+          ],
+          "description": "Verifica saúde da aplicação.",
+          "parameters": [
+            {
+              "in": "query",
+              "name": "lang",
+              "required": true,
+              "description": "language",
+              "schema": {
+                "type": "string",
+                "example": "pt-BR"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Healthcheck.",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "string",
+                    "example": "Healthcheck (200='ok')."
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/swagger": {
+        "get": {
+          "tags": [
+            "Swagger"
+          ],
+          "description": "Swagger.",
+          "parameters": [
+            {
+              "in": "query",
+              "name": "lang",
+              "required": true,
+              "description": "language",
+              "schema": {
+                "type": "string",
+                "example": "pt-BR"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Swagger.",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "string",
+                    "example": "Você está aqui! Uma breve documentação sobre a API"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/app": {
+        "get": {
+          "tags": [
+            "Hello World!"
+          ],
+          "description": "Greeting!.",
+          "parameters": [
+            {
+              "in": "query",
+              "name": "lang",
+              "required": true,
+              "description": "language",
+              "schema": {
+                "type": "string",
+                "example": "pt-BR"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Quick Greeting.",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "string",
+                    "example": "Quick Greeting."
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }

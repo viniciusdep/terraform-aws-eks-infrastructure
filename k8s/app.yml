@@ -1,0 +1,51 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp
+  namespace: default
+  labels:
+    app: myapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+        - name: myapp
+          image: viniciusdep/myhello
+          ports:
+            - containerPort: 5000
+          env:
+            - name: SIMPLE_GREETING_4_YOU
+              valueFrom:
+                configMapKeyRef:
+                  name: greeting
+                  key: hello 
+            - name: MY_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: greeting
+                  key: my_full_name
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapp-access
+  namespace: default
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-type: nlb
+    service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: 'true'
+spec:
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 5000
+  selector:
+    app: myapp
+  type: LoadBalancer
