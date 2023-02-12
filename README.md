@@ -22,9 +22,13 @@
 ###### $  kubectl exec pod/myapp -- printenv
 ###### SIMPLE_GREETING_4_YOU=Hello World!
 ###### MY_NAME=Hi! I'm Vinicius de Paula
-
-###### Obs: I personally recommend you define these variables as opaque or encrypt using base64 in production environments
+###### Obs: I personally recommend you define these variables as opaque in configmap manifests or encrypt using base64 in production environments
 
 #### Third: Terraform
 ###### There are lots of files, but basically we are creating a 3 layer architecture using the application in docker, deployed using eks on ir own VPC and subnets, a RDS (is not useful for my app) using it's own subnets and a bastion host to restric connection, and all components that are important for us, such as nat gateways, internet gateway, route table and also a s3 to store our tf.state in case of incidents. 
-###### obs: To make quick ajusts, all of variables are displayed inside infrastructure.tfvars (I just add a few of them to give as an example). 
+
+###### To make quick ajusts, all of variables are displayed inside "infrastructure.tfvars". 
+
+###### There is a refference architecture used to create this Infrastructure
+
+![Alt text](EKS-arhitecture-overview.png?raw=true "AWS Architecture with EKS")

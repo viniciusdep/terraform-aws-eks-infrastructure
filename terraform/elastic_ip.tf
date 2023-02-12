@@ -1,16 +1,16 @@
-#===============CRIAÇÃO DE ELASTIC IPS===============#
-# Forçando um IP fixo 
+#===============ELASTIC IPS===============#
+# Forces the same IP 
 
 resource "aws_eip" "elastic-ip1A-vdep" {
     depends_on = [aws_internet_gateway.igw-vdep]
     tags = {
-        Name = "elastic-ip1A-vdep"
+        Name = var.eip_1a_tag
     }
 }
 
 resource "aws_eip" "elastic-ip1C-vdep" {
     depends_on = [aws_internet_gateway.igw-vdep]
     tags = {
-        Name = "elastic-ip1C-vdep"
+        Name = var.eip_1c_tag
     }
 }
